@@ -1,0 +1,46 @@
+<%- include("partials/header.ejs") %>
+
+    <div class="space-x-4 font-bold text-lg ">
+        <a href="/">Home</a>
+        <a href="/work">Work</a>
+    </div>
+
+    <div class="flex justify-between items-center">
+        <hr class="border-2 w-1/4">
+        <h1 class="text-4xl flex justify-center mx-4">Today&nbsp;<p class="text-[#b6b6b7]">Lists</p>
+        </h1>
+        <hr class="border-2 w-1/4">
+    </div>
+
+    <div
+        class="flex flex-col rounded-lg justify-center items-center text-white p-4 bg-[#007fdc] text-center space-y-10 md:w-2/4 md:mx-auto">
+        <div class="list flex-col">
+            <% if(today.length < 10) {
+                for(let i=0; i<today.length; i++) { %>
+                    <p><%= today[i] %></p>
+            <%    }
+                for(let i=today.length; i<10; i++) { %>
+                    <p> - </p>
+            <%    }
+            } else {
+                for(let i=0; i<today.length; i++) { %>
+                    <p><%= today[i] %></p>
+            <%    }
+            } %>
+        </div>
+        <div class="btns flex flex-col justify-between items-center space-y-2 lg:flex-row lg:space-y-0">
+            <form action="/addtoday" class="flex items-center justify-center space-x-3" method="post">
+                <input type="text" placeholder="item" name="item" class="w-2/4 rounded-lg text-center text-black">
+                <button class="w-6" type="submit" ><img  src="/images/add.png" alt=""></button>
+            </form>
+            <form action="/deltoday" class="flex items-center justify-center space-x-3" method="post">
+                <input type="text" placeholder="item" name="item" class="w-2/4 rounded-lg text-center text-black">
+                <button class="w-6" type="submit" ><img  src="/images/delete.png" alt=""></button>
+            </form>
+        </div>
+    </div>
+
+    </div>
+    </body>
+
+    </html>

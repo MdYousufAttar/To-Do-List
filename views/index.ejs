@@ -1,0 +1,53 @@
+<%- include("partials/header.ejs") %>
+            <div class="flex justify-between items-center">
+                <hr class="border-2 w-1/4">
+                <h1 class="text-4xl flex justify-center mx-4">Tasks&nbsp;<p class="text-[#b6b6b7]">Lists</p>
+                </h1>
+                <hr class="border-2 w-1/4">
+            </div>
+
+            <div class="flex flex-col justify-center items-center text-white space-y-5 md:flex-row md:space-y-0 md:space-x-10">
+
+                <a href="/today" class="flex-row rounded-lg p-4 bg-[#007fdc] md:w-2/4">
+                    <button><h1>Today - (Top 10)</h1></button>
+                    <hr class="my-2">
+                    <% if(today.length < 10) {
+                        for(let i=0; i<today.length; i++) { %>
+                            <p><%= today[i] %></p>
+                    <%    }
+                        for(let i=today.length; i<10; i++) { %>
+                            <p> -</p>
+                    <%    }
+                    } else {
+                        for(let i=0; i<today.length; i++) { %>
+                            <p><%= today[i] %></p>
+                    <%    }
+                    } %>
+                </a>
+
+                <a href="/work" class="flex-row rounded-lg p-4 bg-[#fd9a01] md:w-2/4">
+                    <button><h1>Work- (Top 10)</h1></button>
+                    <hr class="my-2">
+                    <% if(work.length < 10) {
+                        for(let i=0; i<work.length; i++) { %>
+                            <p><%= work[i] %></p>
+                    <%    }
+                        for(let i=work.length; i<10; i++) { %>
+                            <p> -</p>
+                    <%    }
+                    } else {
+                        for(let i=0; i<work.length; i++) { %>
+                            <p><%= work[i] %></p>
+                    <%    }
+                    } %>
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</body>
+
+</html>

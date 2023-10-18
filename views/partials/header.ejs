@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="min-h-screen bg-no-repeat bg-cover flex justify-center items-center"
+        style="background-image: url('/images/bg.jpg');">
+        <div class="text-center bg-white rounded-lg p-8 w-2/3 text-black font-medium space-y-8 md:w-3/5">
+            <div class="navbar flex justify-between items-center w-full md:px-10">
+                <div class="flex items-center">
+                    <div class="grid grid-rows-2 grid-flow-col items-center">
+                        <p class="date text-2xl row-span-2 font-semibold scale-y-150 scale-x-110 mr-3"><%=date %></p>
+                        <p class="month "><%= month %></p>
+                        <p class="year text-[#b6b6b7] text-left"><%= year %></p>
+                    </div>
+                </div>
+
+                <div class="day"><%= day %></div>
+            </div>

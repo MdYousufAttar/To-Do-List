@@ -1,0 +1,46 @@
+<%- include("partials/header.ejs") %>
+
+    <div class="space-x-4 font-bold text-lg">
+        <a href="/">Home</a>
+        <a href="/today">Today</a>
+    </div>
+    <div class="flex justify-between items-center">
+        <hr class="border-2 w-1/4">
+        <h1 class="text-4xl flex justify-center mx-4">Work&nbsp;<p class="text-[#b6b6b7]">Lists</p>
+        </h1>
+        <hr class="border-2 w-1/4">
+    </div>
+
+    <div
+        class="flex flex-col rounded-lg justify-center items-center text-white p-4 bg-[#007fdc] text-center space-y-10 md:w-2/4 md:mx-auto">
+        <div class="list flex-col">
+            <% if(work.length < 10) { for(let i=0; i<work.length; i++) { %>
+                <p>
+                    <%= work[i] %>
+                </p>
+                <% } for(let i=work.length; i<10; i++) { %>
+                    <p> -</p>
+                    <% } } else { for(let i=0; i<work.length; i++) { %>
+                        <p>
+                            <%= work[i] %>
+                        </p>
+                        <% } } %>
+        </div>
+        <div class="btns flex justify-between items-center">
+            <form action="/addwork" method="post">
+                <input type="text" placeholder="item" name="item" class="w-2/4 rounded-lg text-center text-black">
+                <button class="add w-6" type="submit" ><img src="/images/add.png" alt=""></button>
+            </form>
+            <form action="/delwork" method="post">
+                <input type="text" placeholder="item" name="item" class="w-2/4 rounded-lg text-center text-black">
+                <button class="add w-6" type="submit" ><img src="/images/delete.png" alt=""></button>
+            </form>
+        </div>
+    </div>
+
+    </div>
+
+    </div>
+    </body>
+
+    </html>
