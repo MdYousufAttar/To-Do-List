@@ -27,13 +27,10 @@
                         <% } } %>
         </div>
         <div class="btns flex justify-between items-center">
-            <form action="/addwork" method="post">
+            <form action="/fwork" method="post">
+                <button class="add w-6" type="submit" value="del" name="opt"><img src="/images/delete.png" alt=""></button>
                 <input type="text" placeholder="item" name="item" class="w-2/4 rounded-lg text-center text-black">
-                <button class="add w-6" type="submit" ><img src="/images/add.png" alt=""></button>
-            </form>
-            <form action="/delwork" method="post">
-                <input type="text" placeholder="item" name="item" class="w-2/4 rounded-lg text-center text-black">
-                <button class="add w-6" type="submit" ><img src="/images/delete.png" alt=""></button>
+                <button class="add w-6" type="submit" value="add" name="opt"><img src="/images/add.png" alt=""></button>
             </form>
         </div>
     </div>

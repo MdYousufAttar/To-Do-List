@@ -6,9 +6,9 @@ import ejs from "ejs"
 let app = express()
 let port = 3000
 
-app.use(bodyParser.urlencoded({extended : true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use( express.static( "public" ) );
+app.use(express.static("public"));
 
 let data = new Date()
 
@@ -18,11 +18,11 @@ let months = ["January", "February", "March", "April", "May", "June", "July", "A
 
 let allinfo = {
     date: data.getDate(),
-    day: days[data.getDay()-1],
+    day: days[data.getDay() - 1],
     month: months[data.getMonth()],
     year: data.getFullYear(),
-    today : ["Running", "Jumping", "Walking", "Sleeping", "Singing", "Writing", "Cooking", "Gaming"],
-    work : ["Running", "Jumping", "Walking", "Dancing", "Singing", "Working", "Drawing", "Writing", "Cooking", "Gaming"]
+    today: ["Running", "Jumping", "Walking", "Sleeping", "Singing", "Writing", "Cooking", "Gaming"],
+    work: ["Running", "Jumping", "Walking", "Dancing", "Singing", "Working", "Drawing", "Writing", "Cooking", "Gaming"]
 }
 
 
@@ -41,28 +41,38 @@ app.get("/work", (req, res) => {
     res.render("work.ejs", allinfo)
 })
 
-app.post("/addtoday", (req, res) => {
-    allinfo.today.push(req.body["item"])
-    res.redirect("/today")  // <- can also redirect or render 
-})
-app.post("/deltoday", (req, res) => {
-    let index = allinfo.today.indexOf(req.body["item"]);
-    if (index > -1) { 
-        allinfo.today.splice(index, 1); 
+app.post("/ftoday", (req, res) => {
+    switch (req.body.opt) {
+        case "add":
+            allinfo.today.push(req.body["item"])
+            break
+        case "del":
+            let index = allinfo.today.indexOf(req.body["item"]);
+            if (index > -1) {
+                allinfo.today.splice(index, 1);
+            }
+            break
+        default:
+            break
     }
-    res.render("today.ejs", allinfo);
+    res.redirect("/today")
 })
 
-app.post("/addwork", (req, res) => {
-    allinfo.work.push(req.body["item"])
-    res.render("work.ejs", allinfo);
-})
-app.post("/delwork", (req, res) => {
-    let index = allinfo.work.indexOf(req.body["item"]);
-    if (index > -1) { 
-        allinfo.work.splice(index, 1); 
+app.post("/fwork", (req, res) => {
+    switch (req.body.opt) {
+        case "add":
+            allinfo.work.push(req.body["item"])
+            break
+        case "del":
+            let index = allinfo.work.indexOf(req.body["item"]);
+            if (index > -1) {
+                allinfo.work.splice(index, 1);
+            }
+            break
+        default:
+            break
     }
-    res.render("work.ejs", allinfo);
+    res.redirect("/work")
 })
 
 app.listen(port, (req, res) => {

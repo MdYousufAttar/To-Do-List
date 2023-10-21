@@ -29,13 +29,10 @@
             } %>
         </div>
         <div class="btns flex flex-col justify-between items-center space-y-2 lg:flex-row lg:space-y-0">
-            <form action="/addtoday" class="flex items-center justify-center space-x-3" method="post">
+            <form action="/ftoday" class="flex items-center justify-center space-x-3" method="post">
+                <button class="w-6" type="submit" value="del" name="opt"><img  src="/images/delete.png" alt=""></button>
                 <input type="text" placeholder="item" name="item" class="w-2/4 rounded-lg text-center text-black">
-                <button class="w-6" type="submit" ><img  src="/images/add.png" alt=""></button>
-            </form>
-            <form action="/deltoday" class="flex items-center justify-center space-x-3" method="post">
-                <input type="text" placeholder="item" name="item" class="w-2/4 rounded-lg text-center text-black">
-                <button class="w-6" type="submit" ><img  src="/images/delete.png" alt=""></button>
+                <button class="w-6" type="submit" value="add" name="opt"><img  src="/images/add.png" alt=""></button>
             </form>
         </div>
     </div>
